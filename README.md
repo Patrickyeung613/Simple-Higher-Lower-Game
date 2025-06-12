@@ -10,7 +10,7 @@ The Higher Lower Game is a Python-based console game where players compare the f
 
 ## How to Play
 1. Run `main.py` in a Python environment.
-2. The game displays the logo and presents two social media platforms (A and B) with their names and descriptions.
+2. The game displays the logo and presents two social media platforms (A and B) with their names, descriptions, and countries.
 3. Type `A` or `B` to guess which platform has more followers.
 4. If you guess correctly, your score increases, and a new comparison is presented.
 5. The game ends if you guess incorrectly or if there are fewer than two platforms left to compare.
