@@ -12,13 +12,13 @@ def compare():
     if check_list() == 2:
         return 2
     data_A = random.choice(data_list)
-    print(f"Compare A: {data_A['name']}, {data_A['description']}.")
+    print(f"Compare A: {data_A['name']}, {data_A['description']}, from {data_A['country']}.")
     data_list.remove(data_A)
 
     print(art.vs)
 
     data_B = random.choice(data_list)
-    print(f"Compare B: {data_B['name']}, {data_B['description']}.")
+    print(f"Compare B: {data_B['name']}, {data_B['description']}, from {data_B['country']}.")
     data_list.remove(data_B)
 
     choice = input("Who has more follower? Type 'A' or 'B':").upper()
