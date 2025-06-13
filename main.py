@@ -5,38 +5,49 @@ from game_data import data
 data_list = data
 
 def check_list():
-    if len(data_list) < 2:
-        return 2
+    if len(data_list) == 0:
+        return False
     
-def compare():
-    if check_list() == 2:
+def compare(data_A):
+    if check_list() == False:
         return 2
-    data_A = random.choice(data_list)
-    print(f"Compare A: {data_A['name']}, {data_A['description']}, from {data_A['country']}.")
-    data_list.remove(data_A)
+    print(f"Compare A: {data_A['name']}, {data_A['description']}, from {data_A['country']}, {data_A['follower_count']}.")
 
     print(art.vs)
 
     data_B = random.choice(data_list)
-    print(f"Compare B: {data_B['name']}, {data_B['description']}, from {data_B['country']}.")
-    data_list.remove(data_B)
+    print(f"Compare B: {data_B['name']}, {data_B['description']}, from {data_B['country']}, {data_B['follower_count']}.")
 
     choice = input("Who has more follower? Type 'A' or 'B':").upper()
-    if (choice == "A" and data_A['follower_count'] > data_B['follower_count']) or (choice == "B" and data_B['follower_count'] > data_A['follower_count']):
-        return 1
+    if choice == "A" and (data_A['follower_count'] > data_B['follower_count'] or data_A['follower_count'] == data_B['follower_count']):
+        try:
+            data_list.remove(data_B)
+        except ValueError:
+            pass
+        finally:
+            return 1, data_A
+    elif choice == "B" and (data_B['follower_count'] > data_A['follower_count'] or data_A['follower_count'] == data_B['follower_count']):
+        try:
+            data_list.remove(data_A)
+        except ValueError:
+            pass
+        finally:
+            return 1, data_B
     else:
-        return 0
+        return 0, 0
     
 def play_game(): 
     result = -1
     score = 0
     print(art.logo)
+    data_for_compare = random.choice(data_list)
+    data_list.remove(data_for_compare)
 
     while result != 0:
-      result = compare()
+      result, data_for_compare = compare(data_for_compare)
       if result == 1:
           score += 1
-          print("\n" * 20)
+          print("\n" * 10)
           print(art.logo)
           print(f"You are right! Current score: {score}")
       elif result == 2:
