@@ -11,12 +11,12 @@ def check_list():
 def compare(data_A):
     if check_list() == False:
         return 2
-    print(f"Compare A: {data_A['name']}, {data_A['description']}, from {data_A['country']}, {data_A['follower_count']}.")
+    print(f"Compare A: {data_A['name']}, {data_A['description']}, from {data_A['country']}.")
 
     print(art.vs)
 
     data_B = random.choice(data_list)
-    print(f"Compare B: {data_B['name']}, {data_B['description']}, from {data_B['country']}, {data_B['follower_count']}.")
+    print(f"Compare B: {data_B['name']}, {data_B['description']}, from {data_B['country']}.")
 
     choice = input("Who has more follower? Type 'A' or 'B':").upper()
     if choice == "A" and (data_A['follower_count'] > data_B['follower_count'] or data_A['follower_count'] == data_B['follower_count']):
